@@ -1,0 +1,38 @@
+<?php
+    $viewUrl = $block->getUrl('himani/view/');
+    $createUrl = $block->getUrl('himani/update/');
+    $id = $this->getRequest()->getParam('id');
+    if(!empty($id)){
+    $item = $block->getUpdatedData();
+    }else{
+        $item = $block;
+    }
+?>
+<table align="center" cellspacing="2px" cellpadding="15px">
+<tr>
+    <td></td>
+    <td></td>
+    <td><a href="<?php echo $viewUrl; ?>" class="action subscribe primary">View</a></td>
+</tr>
+</table>
+<table align="center" cellspacing="2px" cellpadding="15px">
+<form method="post" action="/himani/magento/himani/crud/save">
+<?php if(!empty($id)){ ?>
+    <input type="hidden" name="id" value="<?php echo __($item->getId()); ?>" />
+<?php }else{ ?>
+    <input type="hidden" name="save" value="0"/>
+<?php } ?>
+    <tr><td>Name</td>
+        <td><input type="text" name="name" id="name" value="<?php echo __($item->getName()); ?>"/></td>
+    </tr>
+    <tr><td>Email</td>
+        <td><input type="email" name="email" id="email" value="<?php echo __($item->getEmail()); ?>"/></td>
+    </tr>
+    <tr><td>Country</td>
+        <td><input type="text" name="country" id="country" value="<?php echo __($item->getCountry()); ?>"/></td>
+    </tr>
+    <tr><td></td>
+        <td><input type="submit" value="Submit" class="action subscribe primary"></td>
+    </tr>
+</form>
+</table>

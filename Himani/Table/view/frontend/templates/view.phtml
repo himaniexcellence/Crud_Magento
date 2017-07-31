@@ -1,0 +1,24 @@
+<?php
+    $createUrl = $block->getUrl('himani/update/');
+    $collection = $block->getCollection();
+    $item = $block->getUpdatedData();
+    //echo '<pre>';
+    //print_r($item);die();
+?>
+<table align="center" cellspacing="2px" cellpadding="15px">
+<tr><a href="<?php echo $createUrl; ?>" class="action subscribe primary">Create New</a></tr>
+    <tr>
+        <th>Id</th><th>Name</th><th>Email</th><th>Country</th><th>Update</th><th>Delete</th>
+    </tr>
+        <?php   foreach($collection as $item): ?>
+    <tr>
+        <td><?php echo __($item->getId()); ?></td>
+        <td><?php echo __($item->getName()); ?></td>
+        <td><?php echo __($item->getEmail()); ?></td>
+        <td><?php echo __($item->getCountry()); ?></td>
+        <td><a href="/himani/magento/himani/update/index?id=<?php echo $item->getId(); ?>">Edit</a>
+        </td>
+        <td><a href="/himani/magento/himani/crud/delete?id=<?php echo $item->getId(); ?>">Delete</a></td>
+    </tr>
+        <?php endforeach; ?>
+</table>
