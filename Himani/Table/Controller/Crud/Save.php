@@ -22,9 +22,10 @@ class Save extends \Magento\Framework\App\Action\Action
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getParams();
+        $id = $this->getRequest()->getParam('id');
         if($data){ 
             $model = $this->_dataFactory->create();
-            $model->operation($data);
+            $model->operation($id,$data);
         }
         return $resultRedirect->setPath('himani/view');
     }

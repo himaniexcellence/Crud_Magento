@@ -13,14 +13,14 @@ class Data extends \Magento\Framework\Model\AbstractModel implements \Magento\Fr
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
     }
-    public function operation($object)
-    {   
-       if(empty($_REQUEST['name'])){
-            $this->load($object);
+    public function operation($id,$data)
+    {  
+       if(!empty($id) && empty($data)){ 
+            $this->load($id);
             $this->getData(); 
             return $this;
-        }else{
-            $this->setData($object);
+        }elseif(!empty($data)){ 
+            $this->setData($data);
             $this->save();
             return $this;
         }

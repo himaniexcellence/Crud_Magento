@@ -25,10 +25,11 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
+        $data = null;
         $resultRedirect = $this->resultPageFactory->create(); 
         if($id){
             $model = $this->_dataFactory->create();
-            $data = $model->operation($id);
+            $data = $model->operation($id,$data);
             $this->_registry->register('updated_data',$data);
         }
         return $resultRedirect;
